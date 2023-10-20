@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="./base.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <main>
+      
+        <h1>Welcome to My Website</h1>  
+
+        <form id="searchForm">
+          <input type="text" id="diseaseInput" placeholder="Enter disease (e.g., heart attack). Please use the full disease name">
+          <input type="text" id="cityInput" placeholder="Enter city (e.g., Bethesda)">
+          <input type="text" id="stateInput" placeholder="Enter state (e.g., Maryland)">
+          <button type="submit">Search</button>
+        </form>
+
+        <!-- mailchimp signup from starts here -->
+        <div id="signupSection" class = 'signup-section' style="display:none;">
+            <div id="mc_embed_shell">
+                <div id="mc_embed_signup">
+                    <form action="https://protonmail.us21.list-manage.com/subscribe/post?u=f44c66b6e77a21a5d8839efd2&amp;id=6d1c3095a6&amp;f_id=0035e5e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                            <div id="mc_embed_signup_scroll">
+                                <h2>Sign Up for Email Updates</h2>
+                                <p>We will send you an email if a new study starts recruiting in your city. Enter your email below:</p>
+                            </div>
+                            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name</label>
+                                <input type="text" name="FNAME" class=" text" id="mce-FNAME" value="">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="">
+                            </div>
+                            <div class="mc-field-group">
+                                <!-- <label for="mce-DISEASE">Disease </label> -->
+                                <input type="hidden" name="DISEASE" class=" text" id="mce-DISEASE" value="">
+                            </div>
+                            <div class="mc-field-group">
+                                <!-- <label for="mce-CITY">City </label> -->
+                                <input type="hidden" name="CITY" class=" text" id="mce-CITY" value="">
+                            </div>
+                            <div class="mc-field-group">
+                                <!-- <label for="mce-STATE">State </label> -->
+                                <input type="hidden" name="STATE" class=" text" id="mce-STATE" value="">
+                            </div>
+                        <div id="mce-responses" class="clear foot">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                        </div>
+                        <div style="position: absolute; left:-5000px; " aria-hidden="true">
+                        <!-- /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */ -->
+                            <input type="text" name="b_f44c66b6e77a21a5d8839efd2_6d1c3095a6" tabindex="-1" value="">
+                        </div>
+                        <div class="optionalParent">
+                            <div class="clear foot">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                            </div>
+                        </div>
+                    </form>
+                </div>    
+            </div>    
+        </div>
+
+        <!-- <div id="signupSection" style="display:none;"> -->
+          <!-- <form class="signup-section" id = 'signupForm'>
+            <h2>Sign Up for Email Updates</h2>
+            <p>We will send you an email if a new study starts recruiting in your city. Enter your email below:</p>
+            <input type="hidden" id="signupDisease" >
+            <input type="hidden" id="signupCity" >
+            <input type="hidden" id="signupState" placeholder="State..." readonly>
+            <input type="email" id="emailInput" placeholder="Your email address">
+            <button>Sign Up</button>
+          </form>
+        </div> -->
+
+        <h2 id="resultCount">We found 0 matching trials</h2>
+        <!-- populate the div with API responses -->
+        <div id = 'response-data'></div>
+      
+    </main>
+	<script src="index.js"></script>
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[4]='DISEASE';ftypes[4]='text';fnames[6]='CITY';ftypes[6]='text';fnames[7]='STATE';ftypes[7]='text';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
+  </body>
+</html>
+
+
+
+
