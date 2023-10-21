@@ -580,6 +580,10 @@ video {
   margin-right: auto;
 }
 
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -592,8 +596,8 @@ video {
   margin-top: 0.5rem;
 }
 
-.mt-2\.5 {
-  margin-top: 0.625rem;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .block {
@@ -622,6 +626,10 @@ video {
 
 .h-6 {
   height: 1.5rem;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .w-4 {
@@ -697,8 +705,16 @@ video {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-center {
   align-items: center;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .gap-x-4 {
@@ -711,8 +727,8 @@ video {
        column-gap: 2rem;
 }
 
-.gap-y-6 {
-  row-gap: 1.5rem;
+.gap-y-3 {
+  row-gap: 0.75rem;
 }
 
 .overflow-hidden {
@@ -760,6 +776,10 @@ video {
   --tw-gradient-to: #9089fc var(--tw-gradient-to-position);
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-px {
   padding: 1px;
 }
@@ -792,6 +812,10 @@ video {
 .py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -856,6 +880,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .opacity-30 {
@@ -977,6 +1006,10 @@ video {
     margin-top: 5rem;
   }
 
+  .sm\:mt-8 {
+    margin-top: 2rem;
+  }
+
   .sm\:w-\[72\.1875rem\] {
     width: 72.1875rem;
   }
@@ -985,9 +1018,9 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .sm\:py-32 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+  .sm\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .sm\:text-4xl {
@@ -1000,8 +1033,32 @@ video {
     line-height: 1.25rem;
   }
 
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .sm\:leading-6 {
     line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
   }
 }
 

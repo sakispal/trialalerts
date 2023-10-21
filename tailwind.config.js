@@ -7,3 +7,4 @@ module.exports = {
   plugins: [],
 }
 
+//the build command is  npx tailwindcss -i ./tw.css -o ./site/main.css --watch

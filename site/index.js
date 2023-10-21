@@ -26,6 +26,18 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
 
     // Display the signup section
     document.getElementById('signupSection').style.display = 'block';
+    //Here I can implement a mailchimp signup control to force the user to accept TCs. However, I am fine for now with just the toggle. 
+    // document.getElementById('signupSection').addEventListener('submit', function(event) {
+    //     //prevent form from being submitted without the toggle being checkeds
+    //     const toggleButton = document.getElementById('myToggle');
+    
+    //     // Check if the toggle's aria-checked attribute is set to "false"
+    //     if (toggleButton.getAttribute('aria-checked') === 'false') {
+    //         event.preventDefault();
+    //         alert('Please agree to the terms and conditions before submitting.');
+    //     }
+    // });
+      
 });
 
 function updateDivWithStudyDetails(jsonData, userInput) {
@@ -67,14 +79,15 @@ function updateDivWithStudyDetails(jsonData, userInput) {
         // If there's a match, append the details to the HTML content
         if (matchingLocations.length > 0) {
             matchingTrialCount++;
-            htmlContent += `<div class="study-block">`;
-            htmlContent += `<div class="study-title">Title: ${officialTitle}</div>`;
-            htmlContent += `<div class="study-location">Location: ${locationStr}</div>`;
-            htmlContent += `<div class="study-start-date">Start Date: ${startDate}</div>`;
-            htmlContent += `<div class="study-contact">Main Contact: ${primaryContactInfo}</div>`;
-            htmlContent += `<div class="study-url"><a href="${studyUrl}" target="_blank">View Study</a></div>`;
+            htmlContent += `<div class="study-block bg-white p-4 rounded shadow-md mb-4">`;  // Added Tailwind classes for basic styling
+            htmlContent += `<div class="study-title font-bold mb-2">Title: ${officialTitle}</div>`;
+            htmlContent += `<div class="study-location mb-2">Location: ${locationStr}</div>`;
+            htmlContent += `<div class="study-start-date mb-2">Start Date: ${startDate}</div>`;
+            htmlContent += `<div class="study-contact mb-2">Main Contact: ${primaryContactInfo}</div>`;
+            htmlContent += `<div class="study-url"><a href="${studyUrl}" target="_blank" class="text-blue-500 hover:underline">View Study</a></div>`;
             htmlContent += `</div>`;
         }
+        
     }
 
     // Update the result count H2 element
