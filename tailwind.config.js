@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./site/**/*.html"],
+  content: ["./docs/**/*.html"],
   theme: {
     extend: {},
   },
   plugins: [],
 }
 
-//the build command is  npx tailwindcss -i ./tw.css -o ./site/main.css --watch
+//the build command is  npx tailwindcss -i ./tw.css -o ./docs/main.css --watch
