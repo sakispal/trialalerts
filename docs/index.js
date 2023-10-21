@@ -26,17 +26,6 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
 
     // Display the signup section
     document.getElementById('signupSection').style.display = 'block';
-    //Here I can implement a mailchimp signup control to force the user to accept TCs. However, I am fine for now with just the toggle. 
-    // document.getElementById('signupSection').addEventListener('submit', function(event) {
-    //     //prevent form from being submitted without the toggle being checkeds
-    //     const toggleButton = document.getElementById('myToggle');
-    
-    //     // Check if the toggle's aria-checked attribute is set to "false"
-    //     if (toggleButton.getAttribute('aria-checked') === 'false') {
-    //         event.preventDefault();
-    //         alert('Please agree to the terms and conditions before submitting.');
-    //     }
-    // });
       
 });
 
