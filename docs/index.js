@@ -11,13 +11,13 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     document.getElementById('mce-STATE').value = stateValue;
     // Now you can show the second form, hide the first one, or do any other action you wish
   
-    const baseUrl = "https://classic.clinicaltrials.gov/api/query/full_studies";
-    const query = `?expr=${diseaseValue}+AND+SEARCH%5BLocation%5D%28AREA%5BLocationCity%5D+${cityValue}+AND+AREA%5BLocationState%5D+${stateValue}+AND+AREA%5BLocationStatus%5D+Recruiting%29&min_rnk=1&max_rnk=10&fmt=json`;
+    const baseUrl = "https://clinicaltrials.gov/api/v2/studies";
+    const query = `?format=json&query.cond=${diseaseValue}&query.locn=${cityValue},${stateValue}&filter.overallStatus=RECRUITING`;
 
     fetch(baseUrl + query)
       .then(response => response.json())
       .then(data => {
-          console.log(data);  // Process your data here
+          console.log('API returned data', data);  // Process your data here
           updateDivWithStudyDetails(data, cityValue)
       })
       .catch(error => {
@@ -30,33 +30,34 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
 });
 
 function updateDivWithStudyDetails(jsonData, userInput) {
-    const studies = jsonData.FullStudiesResponse.FullStudies;
+    const studies = jsonData.studies;
 
     let htmlContent = '';
     let matchingTrialCount = 0;  // Keep track of the number of matching trials
     for (let study of studies) {
-        const identificationModule = study.Study.ProtocolSection.IdentificationModule || {};
-        const officialTitle = identificationModule.OfficialTitle || 'N/A';
-        const nctId = identificationModule.NCTId || '';
-        const studyUrl = nctId ? `https://clinicaltrials.gov/ct2/show/${nctId}` : '#';
-        const startDate = (study.Study.ProtocolSection.StatusModule && study.Study.ProtocolSection.StatusModule.StartDateStruct) ? study.Study.ProtocolSection.StatusModule.StartDateStruct.StartDate : 'N/A';
+        // console.log('Each study object is: ', study)
+        const identificationModule = study.protocolSection.identificationModule || {};
+        const officialTitle = identificationModule.officialTitle || 'N/A';
+        const nctId = identificationModule.nctId || '';
+        const studyUrl = nctId ? `https://clinicaltrials.gov/study/${nctId}` : '#';
+        const startDate = (study.protocolSection.statusModule && study.protocolSection.statusModule.startDateStruct) ? study.protocolSection.statusModule.startDateStruct.date : 'N/A';
 
-        const contactsLocationsModule = study.Study.ProtocolSection.ContactsLocationsModule || {};
-        const locationList = (contactsLocationsModule.LocationList && contactsLocationsModule.LocationList.Location) || [];
-        const centralContacts = (contactsLocationsModule.CentralContactList && contactsLocationsModule.CentralContactList.CentralContact) || [];
+        const contactsLocationsModule = study.protocolSection.contactsLocationsModule || {};
+        const locationList = contactsLocationsModule.locations || [];
+        const centralContacts = (contactsLocationsModule.centralContacts && contactsLocationsModule.centralContacts) || [];
        
         // Initialize primaryContact with default values
         const primaryContact = centralContacts.length > 0 ? centralContacts[0] : {};
 
-        const contactName = primaryContact.CentralContactName || 'N/A';
-        const contactRole = primaryContact.CentralContactRole || 'N/A';
-        const contactEmail = primaryContact.CentralContactEMail || 'N/A';
-        const contactPhone = primaryContact.CentralContactPhone || 'N/A';
+        const contactName = primaryContact.name || 'N/A';
+        const contactRole = primaryContact.role || 'N/A';
+        const contactEmail = primaryContact.email || 'N/A';
+        const contactPhone = primaryContact.phone || 'N/A';
 
         // Filter locations based on user input
         let matchingLocations = [];
         for (let loc of locationList) {
-            const locationString = [loc.LocationFacility, loc.LocationCity, loc.LocationState, loc.LocationCountry].join(', ').trim(", ");
+            const locationString = [loc.facility, loc.city, loc.state, loc.country].join(', ').trim(", ");
             if (locationString.toLowerCase().includes(userInput.toLowerCase())) {
                 matchingLocations.push(locationString);
             }
